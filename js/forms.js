@@ -100,7 +100,7 @@
         $(this).addClass('tabbed');
         var $this = $(this);
         $this.one('blur', function(e) {
-          
+
           $(this).removeClass('tabbed');
         });
         return;
@@ -555,6 +555,13 @@
           };
 
       $newSelect.on('keydown', onKeyDown);
+
+      var onMouseDown = function(e) {
+          if (e.clientX >= e.target.clientWidth || e.clientY >= e.target.clientHeight) {
+            e.preventDefault();
+          }
+      };
+        $newSelect.on('mousedown', onMouseDown);
     });
 
     function toggleEntryFromArray(entriesArray, entryIndex, select) {
